@@ -31,7 +31,7 @@
                     </span>
                     $ node --version
                     <span class="comment">
-                        // to install latest version - if not installed yet 
+                        // to install latest version - if not installed yet
                         <br>
                         <a href="https://nodejs.org/en/download/" class="download-node" target="_blank">https://nodejs.org/en/download/</a>
                     </span>
@@ -51,7 +51,7 @@
             </div>
             <div class="image"></div>
             <p>
-                Then on your terminal in the same diractory start installing all the dependecies that you will need such as express and many more.           
+                Then on your terminal in the same diractory start installing all the dependecies that you will need such as express and many more.
             </p>
             <div class="code-block">
                 <code>
@@ -91,7 +91,7 @@
                             // server.js
                         </span>
                         <div class="line">
-                            <span class="var">const</span> 
+                            <span class="var">const</span>
                             <span class="variable"> express </span>
                             <span class="equi">=</span>
                             <span class="variable"> require</span>
@@ -100,7 +100,7 @@
                             <span class="braces">)</span>
                         </div>
                         <div class="line">
-                            <span class="var">const</span> 
+                            <span class="var">const</span>
                             <span class="variable"> cors </span>
                             <span class="equi">=</span>
                             <span class="variable"> require</span>
@@ -110,7 +110,7 @@
                         </div>
                         <br>
                         <div class="line">
-                            <span class="var">const</span> 
+                            <span class="var">const</span>
                             <span class="variable"> app </span>
                             <span class="equi">=</span>
                             <span class="variable"> express</span>
@@ -118,7 +118,7 @@
                         </div>
                         <br>
                         <div class="line">
-                            <span class="var">let</span> 
+                            <span class="var">let</span>
                             <span class="variable"> corsOptions </span>
                             <span class="equi">=</span>
                             <span class="braces"> {{ '{' }}</span>
@@ -231,7 +231,7 @@
                 <h4 class="fw-bold">
                     Configure Your MongoDB Database
                 </h4>
-                <div class="code-block">
+                <div class="code-block py-2">
                     <code>
                         <span class="comment">
                             // diractory -> app/config/db.config.js
@@ -239,8 +239,9 @@
                             // db.config.js
                         </span>
                         <div class="line">
-                            <span class="var">module.exports</span> 
-                            <span class="equi"> = </span>
+                            <span class="var">module.</span>
+                            <span>exports</span>
+                            <span class="var"> = </span>
                             <span class="braces">{{ '{' }}</span>
                             <br>
                             <span class="variable ps-4">url</span>
@@ -251,8 +252,129 @@
                         </div>
                     </code>
                 </div>
+                <h4 class="fw-bold">
+                  Define your Database Data
+                </h4>
+                <p class="content-db">
+                  Before you could start storing your data on your database, you need to draw your database. To draw your database
+                  simply means you need to define your <span class="fw-bold">schema</span> <em> (structure of your data)</em>.
+                  This schema will help the database to understand the structure of your data every time you storing it.
+                </p>
+                <div class="code-block py-2">
+                  <code>
+                      <span class="comment">
+                          // diractory -> <strong>app/models/user.model.js</strong>
+                          <br>
+                          <!-- // db.config.js -->
+                      </span>
+                      <div class="line">
+                          <span class="var">module.</span>
+                          <span>exports</span>
+                          <span class="var"> = </span>
+                          <span class="var">mongoose</span>
+                          <span class="var"> =></span>
+                          <span class="braces ps-2">{{ '{' }}</span>
+                          <br>
+                          <span class="declare ps-2">const</span>
+                          <span class="var"> schema</span>
+                          <span> =</span>
+                          <span class="var"> mongoose.</span>
+                          <span>Schema</span>
+                          <span class="braces-1">(</span>
+                          <div class="group ps-4">
+                            <span class="braces-2">{{ '{' }}</span>
+                            <br>
+                            <div class="group ps-2">
+                              <span class="var">name: </span>
+                              <span>String</span>
+                              <span class="var">,</span>
+                              <br>
+                              <span class="var">surname: </span>
+                              <span>String</span>
+                              <span class="var">,</span>
+                              <br>
+                              <span class="var">age: </span>
+                              <span>Number</span>
+                              <span class="var">,</span>
+                              <br>
+                              <span class="var">about: </span>
+                              <span>String</span>
+                              <span class="var">,</span>
+                              <br>
+                              <span class="var">interest: </span>
+                              <span>String</span>
+                              <span class="var">,</span>
+                              <br>
+                              <span class="var">strength: </span>
+                              <span>String</span>
+                              <span class="var">,</span>
+                            </div>
+                            <span class="braces-2">{{ '}'}}</span>
+                            <span class="var">,</span>
+                            <br>
+                            <span class="braces-2">{{'{ '}}</span>
+                            <span class="var">timestamp:</span>
+                            <span> true</span>
+                            <span class="braces-2">{{' }'}}</span>
+                          </div>
+                          <span class="braces ps-2">);</span>
+                          <br>
+
+                          <br>
+                          <span class="comment">
+                            // destraacturing the schema, changing _id to id
+
+                          </span>
+                          <span class="ps-2 var">schema.</span>
+                          <span>method</span>
+                          <span class="braces">(</span>
+                          <span class="str">"toJSON",</span>
+                          <span class="declare">function</span>
+                          <span class="braces">() {{ ' {'}}</span>
+                          <div class="group ps-4">
+                            <span class="declare">const </span>
+                            <span class="braces">{{'{'}}</span>
+                            <span class="var"> __v, _id, ...object </span>
+                            <span class="braces">{{'}'}}</span>
+                            <span class="equi"> = </span>
+                            <span class="declare">this</span>
+                            <span class="var">.</span>
+                            <span>toObject</span>
+                            <span class="braces">()</span>
+                            <br>
+                            <span class="var">object.id</span>
+                            <span class="equi"> = </span>
+                            <span class="var">id;</span>
+                            <br>
+                            <span class="declare">return</span>
+                            <span class="var"> object;</span>
+                          </div>
+                          <span class="braces ps-2">{{'}'}});</span>
+                          <div class="group ps-2 mt-2">
+                            <span class="declare">const</span>
+                            <span class="var"> User</span>
+                            <span class="equi"> = </span>
+                            <span class="var">mongoose.</span>
+                            <span>model</span>
+                            <span class="braces">(</span>
+                            <span class="str">"users"</span>
+                            <span class="var">, schema</span>
+                            <span class="braces">);</span>
+                            <br>
+                            <span class="declare">return</span>
+                            <span class="var"> User</span>
+                          </div>
+
+                          <span class="braces">{{'}'}};</span>
+                      </div>
+                  </code>
+              </div>
+              <h4 class="fw-bold">Create Controller</h4>
+              <p class="content-crl">
+                Your CRUD functionality is developed in the controllers. This helps us to separate our work.
+              </p>
             </div>
         </div>
     </article>
-    
+
 </main>
