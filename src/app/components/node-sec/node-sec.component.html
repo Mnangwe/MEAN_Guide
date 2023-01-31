@@ -261,7 +261,7 @@
                 <div class="code-block py-2">
                   <code>
                       <span class="comment">
-                          // diractory -> <strong>app/models/user.model.js</strong>
+                          // directory -> <strong>app/models/user.model.js</strong>
                           <br>
                           <!-- // db.config.js -->
                       </span>
@@ -371,7 +371,114 @@
               <p class="content-crl">
                 Your CRUD functionality is developed in the controllers. This helps us to separate our work.
               </p>
-              
+
+              <p class="crl-1">
+                Inside the app/controller folder we will start our crud.
+              </p>
+              <ul class="functions">
+                <li class="function">create</li>
+                <li class="function">findAll</li>
+                <li class="function">findOne</li>
+                <li class="function">updateOne</li>
+                <li class="function">deleteOne</li>
+              </ul>
+              <p class="building">
+                in order to create these functions we will need to import the models folder
+                 that has <strong>mongoose models</strong> that supports all the functions we will need.
+              </p>
+              <div class="code-block py-2">
+                <code>
+                    <span class="comment">
+                        // directory -> <strong>app/controllers/user.controller.js</strong>
+                    </span>
+                    <div class="line">
+                        <span class="declare">const </span>
+                        <span class="var">db</span>
+                        <span class="equi"> = </span>
+                        <span class="variable">require</span>
+                        <span class="braces">(</span>
+                        <span class="str">"../models"</span>
+                        <span class="braces">)</span>
+                        <br>
+                        <span class="declare">const </span>
+                        <span class="var">User</span>
+                        <span class="equi"> = </span>
+                        <span class="var">db.user</span>
+                        <br>
+                        <div class="function-1 mt-3">
+                            <span class="var">exports.</span>
+                            <span class="variable">create</span>
+                            <span class="equi"> = </span>
+                            <span class="braces">(</span>
+                            <span class="param">req</span>
+                            <span class="braces">, </span>
+                            <span class="param">res</span>
+                            <span class="braces">)</span>
+                            <span class="equi"> => </span>
+                            <span class="braces">{{'{'}}</span>
+                            <br>
+                            <div class="ps-2">
+                                <span>if</span>
+                                <span class="braces-1">(</span>
+                                <span>!</span>
+                                <span class="param">req</span>
+                                <span class="var">.body.name</span>
+                                <span class="braces-1">) </span>
+                                <span class="braces-1">{{'{'}}</span>
+                                <br>
+                                <div class="ps-2">
+                                    <span class="param">req</span>
+                                    <span class="var">.</span>
+                                    <span class="variable">status</span>
+                                    <span class="braces-2">(</span>
+                                    <span class="braces-1">400</span>
+                                    <span class="braces-2">)</span>
+                                    <span class="var">.</span>
+                                    <span class="variable">send</span>
+                                    <span class="braces-2">(</span>
+                                    <span class="braces">{{'{'}}</span>
+                                    <span class="var"> message:</span>
+                                    <span class="str"> "The name cannot be empty!" </span>
+                                    <span class="braces">{{'}'}}</span>
+                                    <span class="braces-2">)</span>
+                                </div>
+                                <span class="braces-1">{{'}'}}</span>
+                                <br><br>
+                                <span class="declare">const </span>
+                                <span class="var">user</span>
+                                <span class="equi"> = </span>
+                                <span>new </span>
+                                <span class="var">User</span>
+                                <span class="braces-1">(</span>
+                                <span class="param">req</span>
+                                <span class="var">.body</span>
+                                <span class="braces-1">)</span>
+                                <br><br>
+                                <span class="var">user.</span>
+                                <span class="variable">save</span>
+                                <span class="braces-1">(</span>
+                                <span class="var">user</span>
+                                <span class="braces-1">)</span>
+                                <span class="var">.</span>
+                                <span class="variable">then</span>
+                                <span class="braces-1">(</span>
+                                <span class="param">data</span>
+                                <span class="equi"> =></span>
+                                <span class="braces-2"> {{'{'}}</span>
+                                <br>
+                                <div class="ps-2">
+                                  <span class="param">res</span>
+                                  <span class="var">.</span>
+                                  <span class="variable">status</span>
+                                </div>
+
+                            </div>
+                            <br>
+                            <span class="braces">{{'}'}}</span>
+                        </div>
+                    </div>
+                </code>
+              </div>
             </div>
         </div>
     </article>
