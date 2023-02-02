@@ -54,3 +54,7 @@ span.comment, .download-node {
 .arrow {
     color: blue;
 }
+
+.summary {
+    margin-bottom: 0;
+}

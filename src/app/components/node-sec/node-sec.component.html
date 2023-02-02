@@ -386,6 +386,7 @@
                 in order to create these functions we will need to import the models folder
                  that has <strong>mongoose models</strong> that supports all the functions we will need.
               </p>
+              <p class="fw-bold">CREATING A USER</p>
               <div class="code-block py-2">
                 <code>
                     <span class="comment">
@@ -405,9 +406,139 @@
                         <span class="equi"> = </span>
                         <span class="var">db.user</span>
                         <br>
+                    </div>
+                    <!-- CREATING A USER -->
+                    <div class="line">
                         <div class="function-1 mt-3">
                             <span class="var">exports.</span>
                             <span class="variable">create</span>
+                            <span class="equi"> = </span>
+                            <span class="braces">(</span>
+                            <span class="param">req</span>
+                            <span class="braces">, </span>
+                            <span class="param">res</span>
+                            <span class="braces">)</span>
+                            <span class="equi"> => </span>
+                            <span class="braces">{{'{'}}</span>
+                            <br>
+                            <div class="ps-2">
+                                <span class="comment">
+                                    // VALIDATING REQUEST
+                                </span>
+                                <span>if</span>
+                                <span class="braces-1">(</span>
+                                <span>!</span>
+                                <span class="param">req</span>
+                                <span class="var">.body.name</span>
+                                <span class="braces-1">) </span>
+                                <span class="braces-1">{{'{'}}</span>
+                                <br>
+                                <div class="ps-2">
+                                    <span class="param">req</span>
+                                    <span class="var">.</span>
+                                    <span class="variable">status</span>
+                                    <span class="braces-2">(</span>
+                                    <span class="braces-1">400</span>
+                                    <span class="braces-2">)</span>
+                                    <span class="var">.</span>
+                                    <span class="variable">send</span>
+                                    <span class="braces-2">(</span>
+                                    <span class="braces">{{'{'}}</span>
+                                    <span class="var"> message:</span>
+                                    <span class="str"> "The name cannot be empty!" </span>
+                                    <span class="braces">{{'}'}}</span>
+                                    <span class="braces-2">)</span>
+                                </div>
+                                <span class="braces-1">{{'}'}}</span>
+                                <br><br>
+                                <span class="comment">
+                                    // CREATING A NEW USER
+                                </span>
+                                <span class="declare">const </span>
+                                <span class="var">user</span>
+                                <span class="equi"> = </span>
+                                <span>new </span>
+                                <span class="var">User</span>
+                                <span class="braces-1">(</span>
+                                <span class="param">req</span>
+                                <span class="var">.body</span>
+                                <span class="braces-1">)</span>
+                                <br><br>
+                                <span class="comment">
+                                    // SAVING USER TO THE DATABASE
+                                </span>
+                                <span class="var">user.</span>
+                                <span class="variable">save</span>
+                                <span class="braces-1">(</span>
+                                <span class="var">user</span>
+                                <span class="braces-1">)</span>
+                                <span class="var">.</span>
+                                <span class="variable">then</span>
+                                <span class="braces-1">(</span>
+                                <span class="param">data</span>
+                                <span class="equi"> =></span>
+                                <span class="braces-2"> {{'{'}}</span>
+                                <br>
+                                <div class="ps-4">
+                                  <span class="param">res</span>
+                                  <span class="var">.</span>
+                                  <span class="variable">status</span>
+                                  <span class="braces">(</span>
+                                  <span class="braces-1">200</span>
+                                  <span class="braces">)</span>
+                                  <span class="var">.</span>
+                                  <span class="variable">send</span>
+                                  <span class="braces">(</span>
+                                  <span class="param">data</span>
+                                  <span class="braces">)</span>
+                                </div>
+                                <span class="braces-2">{{'}'}}</span>
+                                <span class="braces-1">)</span>
+                                <span class="var">.</span>
+                                <span class="variable">catch</span>
+                                <span class="braces-1">(</span>
+                                <span class="param">err</span>
+                                <span class="equi"> =></span>
+                                <span class="braces-2"> {{'{'}}</span>
+                                <div class="ps4">
+                                    <span class="param">res</span>
+                                    <span class="var">.</span>
+                                    <span class="variable">status</span>
+                                    <span class="braces">(</span>
+                                    <span class="braces-1">400</span>
+                                    <span class="braces">)</span>
+                                    <span class="var">.</span>
+                                    <span class="variable">send</span>
+                                    <span class="braces">(</span>
+                                    <span class="braces-1">{{'{'}}</span>
+                                    <span class="var"> message: </span>
+                                    <span class="param">err</span>
+                                    <span class="var">.message </span>
+                                    <span class="braces-1">{{'}'}}</span>
+                                    <span class="braces">)</span>
+                                </div>
+                            </div>
+                            <br>
+                            <span class="braces">{{'}'}}</span>
+                        </div>
+                    </div>
+                </code>
+              </div>
+              <p class="summary">Summary of what is happening the code snippet above:</p>
+              <ul>
+                <small><li>It first checks if the "name" field is present in the request body. If not, it returns a "400 Bad Request" error with a message "The name cannot be empty!"</li>
+                <li>It then creates a new User object using the request body and saves it to the database using the save() method</li>
+                <li>If the saving is successful, it returns a "201 Created" response with the saved data</li>
+                <li>If an error occurs during saving, it returns a "500 Internal Server Error" with the error message</li></small>
+              </ul>
+              <p class="fw-bold">GET ALL THE USERS</p>
+              <div class="code-block py-2">
+                <code>
+                    <div class="line">
+                        <!-- FINDING ALL THE USERS -->
+                        <div class="function-1 mt-3">
+                            <span class="var">exports.</span>
+                            <span class="variable">findAll</span>
                             <span class="equi"> = </span>
                             <span class="braces">(</span>
                             <span class="param">req</span>
@@ -466,12 +597,44 @@
                                 <span class="equi"> =></span>
                                 <span class="braces-2"> {{'{'}}</span>
                                 <br>
-                                <div class="ps-2">
+                                <div class="ps-4">
                                   <span class="param">res</span>
                                   <span class="var">.</span>
                                   <span class="variable">status</span>
+                                  <span class="braces">(</span>
+                                  <span class="braces-1">200</span>
+                                  <span class="braces">)</span>
+                                  <span class="var">.</span>
+                                  <span class="variable">send</span>
+                                  <span class="braces">(</span>
+                                  <span class="param">data</span>
+                                  <span class="braces">)</span>
                                 </div>
-
+                                <span class="braces-2">{{'}'}}</span>
+                                <span class="braces-1">)</span>
+                                <span class="var">.</span>
+                                <span class="variable">catch</span>
+                                <span class="braces-1">(</span>
+                                <span class="param">err</span>
+                                <span class="equi"> =></span>
+                                <span class="braces-2"> {{'{'}}</span>
+                                <div class="ps4">
+                                    <span class="param">res</span>
+                                    <span class="var">.</span>
+                                    <span class="variable">status</span>
+                                    <span class="braces">(</span>
+                                    <span class="braces-1">400</span>
+                                    <span class="braces">)</span>
+                                    <span class="var">.</span>
+                                    <span class="variable">send</span>
+                                    <span class="braces">(</span>
+                                    <span class="braces-1">{{'{'}}</span>
+                                    <span class="var"> message: </span>
+                                    <span class="param">err</span>
+                                    <span class="var">.message </span>
+                                    <span class="braces-1">{{'}'}}</span>
+                                    <span class="braces">)</span>
+                                </div>
                             </div>
                             <br>
                             <span class="braces">{{'}'}}</span>
