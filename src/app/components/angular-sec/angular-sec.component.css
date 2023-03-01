@@ -24,3 +24,37 @@ span.comment, span.api {
     display: block;
     color: gray;
 }
+
+.var {
+    color: rgb(10, 77, 87);
+    padding-left: 1px;
+    padding-right: 1px;
+}
+.declare {
+  color: rgb(23, 7, 247);
+}
+.variable {
+    color: rgb(36, 196, 36);
+}
+.braces {
+    color: rgb(141, 141, 46);
+}
+.braces-1 {
+    color: purple;
+}
+.braces-2 {
+    color: blue;
+}
+.lib {
+    color: rgb(246, 143, 8);
+}
+.param {
+    color: orange;
+}
+.arrow {
+    color: blue;
+}
+
+.summary {
+    margin-bottom: 0;
+}

@@ -5,8 +5,8 @@
     <p class="welcome">
         This section will assume that you have done angular tour-of-heroes and build basic applications with angular,
         if not please go to <a href="https://angular.io/docs" target="_blank">angular website</a>  and read the documemtation.
-        If you want to go straight to tour-of-heroes tutorial, 
-        <a href="https://angular.io/tutorial/tour-of-heroes" target="_blank">click here</a>.
+        If you want to go straight to tour-of-heroes candidate, 
+        <a href="https://angular.io/candidate/tour-of-heroes" target="_blank">click here</a>.
     </p>
     <p class="mandate">
         The aim is to create angular application and connect it to our backend (Node + Express = API)
@@ -50,6 +50,143 @@
             <p>
                 This will generate your application, thereafter you can start working and incoperate your API.
             </p>
+        </div>
+        <div class="content">
+            <h4 class="fw-bold">
+                Building Our Project
+            </h4>
+            <p class="start">
+                To build this project we will start by running some commands on the terminal to set our enviroment and our components to display features that we will need,
+                we build our services to communicate with our api and functions that will handle the data from our api.
+            </p>
+            <h6>
+                IN YOUR TERMINAL
+            </h6>
+            <div class="code-block">
+                <code>
+                    <span class="comment">// run each line </span>
+                    $ ng generate component components/add-candidate <br>
+                    $ ng generate component components/candidate-details <br>
+                    $ ng generate component components/candidates-list <br>
+                    $ ng generate component components/navbar <br>
+                    $ ng generate service services/user <br>
+                </code>
+            </div>
+            <div class="routing">
+                <h6>
+                    APP ROUTING MODULE
+                </h6>
+                <div class="code-block">
+                    <code>
+                        <table data-hpc="" class="highlight tab-size js-file-line-container js-code-nav-container js-tagsearch-file" data-tab-size="2" data-paste-markdown-skip="" data-tagsearch-lang="TypeScript" data-tagsearch-path="angular-15-client/src/app/app-routing.module.ts">
+                            <tbody><tr>
+                              <td id="L1" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="1"></td>
+                              <td id="LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="braces">{{'{'}}</span> <span class="var">NgModule</span> <span class="braces">{{'}'}}</span> <span class="pl-k">from</span> <span class="lib">'@angular/core'</span><span class="braces">;</span></td>
+                            </tr>
+                            <tr>
+                              <td id="L2" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="2"></td>
+                              <td id="LC2" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="braces">{{'{'}}</span> <span class="var">RouterModule</span><span class="braces">,</span> <span class="var">Routes</span> <span class="braces">{{'}'}}</span> <span class="pl-k">from</span> <span class="lib">'@angular/router'</span><span class="braces">;</span></td>
+                            </tr>
+                            <tr>
+                              <td id="L3" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="3"></td>
+                              <td id="LC3" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="braces">{{'{'}}</span> <span class="var">CandidatesListComponent</span> <span class="braces">{{'}'}}</span> <span class="pl-k">from</span> <span class="lib">'./components/candidates-list/candidates-list.component'</span><span class="braces">;</span></td>
+                            </tr>
+                            <tr>
+                              <td id="L4" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="4"></td>
+                              <td id="LC4" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="braces">{{'{'}}</span> <span class="var">CandidateDetailsComponent</span> <span class="braces">{{'}'}}</span> <span class="pl-k">from</span> <span class="lib">'./components/candidate-details/candidate-details.component'</span><span class="braces">;</span></td>
+                            </tr>
+                            <tr>
+                              <td id="L5" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="5"></td>
+                              <td id="LC5" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="braces">{{'{'}}</span> <span class="var">AddCandidateComponent</span> <span class="braces">{{'}'}}</span> <span class="pl-k">from</span> <span class="lib">'./components/add-candidate/add-candidate.component'</span><span class="braces">;</span></td>
+                            </tr>
+                            <tr>
+                              <td id="L6" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="6"></td>
+                              <td id="LC6" class="blob-code blob-code-inner js-file-line">
+                    </td>
+                            </tr>
+                            <tr>
+                              <td id="L7" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="7"></td>
+                              <td id="LC7" class="blob-code blob-code-inner js-file-line"><span class="declare">const </span> <span class="var">routes</span>: <span class="variable">Routes </span> <span class="pl-c1">= </span> <span class="braces">[</span></td>
+                            </tr>
+                            <tr>
+                              <td id="L8" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="8"></td>
+                              <td id="LC8" class="blob-code blob-code-inner js-file-line">  <span class="braces">{{'{'}}</span> <span class="var">path</span>: <span class="lib">''</span><span class="braces">,</span> <span class="var">redirectTo</span>: <span class="lib">'home'</span><span class="braces">,</span> <span class="var">pathMatch</span>: <span class="lib">'full'</span> <span class="braces">{{'}'}}</span><span class="braces">,</span></td>
+                            </tr>
+                            <tr>
+                              <td id="L9" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="9"></td>
+                              <td id="LC9" class="blob-code blob-code-inner js-file-line">  <span class="braces">{{'{'}}</span> <span class="var">path</span>: <span class="lib">'home'</span><span class="braces">,</span> <span class="var">component</span>: <span class="variable">CandidatesListComponent</span> <span class="braces">{{'}'}}</span><span class="braces">,</span></td>
+                            </tr>
+                            <tr>
+                              <td id="L10" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="10"></td>
+                              <td id="LC10" class="blob-code blob-code-inner js-file-line">  <span class="braces">{{'{'}}</span> <span class="var">path</span>: <span class="lib">'candidates/:id'</span><span class="braces">,</span> <span class="var">component</span>: <span class="variable">CandidateDetailsComponent</span> <span class="braces">{{'}'}}</span><span class="braces">,</span></td>
+                            </tr>
+                            <tr>
+                              <td id="L11" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="11"></td>
+                              <td id="LC11" class="blob-code blob-code-inner js-file-line">  <span class="braces">{{'}'}}</span> <span class="var">path</span>: <span class="lib">'add'</span><span class="braces">,</span> <span class="var">component</span>: <span class="variable">AddCandidateComponent</span> <span class="braces">{{'}'}}</span></td>
+                            </tr>
+                            <tr>
+                              <td id="L12" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="12"></td>
+                              <td id="LC12" class="blob-code blob-code-inner js-file-line"><span class="braces">]</span><span class="braces">;</span></td>
+                            </tr>
+                            <tr>
+                              <td id="L13" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="13"></td>
+                              <td id="LC13" class="blob-code blob-code-inner js-file-line">
+                    </td>
+                            </tr>
+                            <tr>
+                              <td id="L14" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="14"></td>
+                              <td id="LC14" class="var">@<span class="variable">NgModule</span><span class="braces">(</span><span class="braces">{{'{'}}</span></td>
+                            </tr>
+                            <tr>
+                              <td id="L15" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="15"></td>
+                              <td id="LC15" class="blob-code blob-code-inner js-file-line">  <span class="var">imports</span>: <span class="braces">[</span><span class="variable">RouterModule</span><span class="braces">.</span><span class="variable">forRoot</span><span class="braces">(</span><span class="var">routes</span><span class="braces">)</span><span class="braces">]</span><span class="braces">,</span></td>
+                            </tr>
+                            <tr>
+                              <td id="L16" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="16"></td>
+                              <td id="LC16" class="blob-code blob-code-inner js-file-line">  <span class="var">exports</span>: <span class="braces">[</span><span class="variable">RouterModule</span><span class="braces">]</span></td>
+                            </tr>
+                            <tr>
+                              <td id="L17" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="17"></td>
+                              <td id="LC17" class="blob-code blob-code-inner js-file-line"><span class="braces">{{'}'}}</span><span class="braces">)</span></td>
+                            </tr>
+                            <tr>
+                              <td id="L18" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="18"></td>
+                              <td id="LC18" class="blob-code blob-code-inner js-file-line"><span class="pl-k">export</span> <span class="declare"> class </span> <span class="var">AppRoutingModule</span> <span class="braces">{{'{'}}</span> <span class="braces">{{'}'}}</span></td>
+                            </tr>
+                      </tbody></table>
+                    </code>
+                </div>
+            </div>
+            <div class="app-module">
+                <h6>
+                    APP MODULE
+                </h6>
+                <p>
+                    For us to be able to communicate with our API we need to import HTTP CLIENT MODULE from angular/common, this will enable http communication from our frontend to the backend through the API endpoints.
+                </p>
+                <div class="code-block">
+                  <code class="animated fadeIn">
+                    <span class="comment">
+                      // src/app/app.module.ts
+                    </span>
+                    
+                      <span class="kwd">import</span>
+                      <span class="braces">{{' {'}}</span>
+                      <span class="var"> HttpClientModule</span>
+                      <span class="braces">}</span>
+                      <span class="kwd"> from </span>
+                      <span class="lib">'@angular/common/http</span>
+                  </code>
+                </div>
+                <p>In the same file go and register the imported module for it to be available in your angular application</p>
+                <div class="code-block">
+                  <code class="animated fadeIn"><span class="lit">@</span><a href="api/core/NgModule" class="code-anchor"><span class="lit">NgModule</span></a><span class="pun">({{'{'}}</span><span class="pln">
+                    imports</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+                      </span><a href="api/common/http/HttpClientModule" class="code-anchor"><span class="typ">HttpClientModule</span></a><span class="pun">,</span><span class="pln">
+                    </span><span class="pun">],</span><span class="pln">
+                  </span><span class="pun">})</span></code>
+                </div>
+            </div>
         </div>
     </article>
     

@@ -176,6 +176,9 @@
                         </div>
                         <br>
                         <div class="line">
+                            <span class="comment">
+                                // ADDING YOUR ROUTES
+                            </span>
                             <span class="var">app.</span>
                             <span class="variable">get</span>
                             <span class="braces">(</span>
@@ -1059,6 +1062,172 @@
                  </small>
                </ul>
                <!-- End of code -->
+            </div>
+
+            <div class="routes">
+                <h4 class="fw-bold">Creating Routes</h4>
+                <p class="content-route">
+                    On this section we will create our routes or endponts to match each end point with its specific function in the controllers.
+                
+                    In order to create these routes we will need to import the controllers folder
+                     that has <strong>functions</strong> that can handle users requests (such as finding all users and updating one) : CRUD.
+                  </p>
+                  <!-- FIRST ROUTE -->
+                  <p class="fw-bold">Our Endpoints</p>
+                  <div class="code-block py-2">
+                    <code>
+                        <span class="comment">
+                            // directory -> <strong>app/routes/user.router.js</strong>
+                        </span>
+                        <div class="line">
+                            <span class="var">module.</span>
+                            <span>exports</span>
+                            <span class="var"> = </span>
+                            <span class="braces">(</span>
+                            <span class="param">app</span>
+                            <span class="braces">)</span>
+                            <span class="equi"> => </span>
+                            <span class="braces">{{ '{' }}</span>
+                            <br>
+                            <div class="line ps-4">
+                                <span class="declare">const </span>
+                                <span class="var">controller</span>
+                                <span class="equi"> = </span>
+                                <span class="variable">require</span>
+                                <span class="braces">(</span>
+                                <span class="str">"../controllers/user.controller.js"</span>
+                                <span class="braces">)</span>
+                                <br>
+                                <span class="declare">const </span>
+                                <span class="var">router</span>
+                                <span class="equi"> = </span>
+                                <span class="variable">require</span>
+                                <span class="braces-1">(</span>
+                                <span class="lib">expres</span>
+                                <span class="braces-1">)</span>
+                                <span class="var">.</span>
+                                <span class="variable">Router</span>
+                                <span class="braces-1">()</span>
+                                <br>
+                            
+                                <div class="function-1 mt-3">
+                                    <span class="var">router.</span>
+                                    <span class="variable">post</span>
+                                    <span class="braces-1">(</span>
+                                    <span class="lib">"/"</span>
+                                    <span class="var">, </span>
+                                    <span class="var">controller.create</span>
+                                    <span class="braces-1">)</span>
+                                    <br>
+                                    <span class="var">router.</span>
+                                    <span class="variable">get</span>
+                                    <span class="braces-1">(</span>
+                                    <span class="lib">"/"</span>
+                                    <span class="var">, </span>
+                                    <span class="var">controller.findAll</span>
+                                    <span class="braces-1">)</span>
+                                    <br>
+                                    <span class="var">router.</span>
+                                    <span class="variable">get</span>
+                                    <span class="braces-1">(</span>
+                                    <span class="lib">"/:id"</span>
+                                    <span class="var">, </span>
+                                    <span class="var">controller.findOne</span>
+                                    <span class="braces-1">)</span>
+                                    <br>
+                                    <span class="var">router.</span>
+                                    <span class="variable">put</span>
+                                    <span class="braces-1">(</span>
+                                    <span class="lib">"/:id"</span>
+                                    <span class="var">, </span>
+                                    <span class="var">controller.update</span>
+                                    <span class="braces-1">)</span>
+                                    <br>
+                                    <span class="var">router.</span>
+                                    <span class="variable">delete</span>
+                                    <span class="braces-1">(</span>
+                                    <span class="lib">"/:id"</span>
+                                    <span class="var">, </span>
+                                    <span class="var">controller.delete</span>
+                                    <span class="braces-1">)</span>
+                                    <br>
+                                    <br>
+                                    <span class="param">app</span>
+                                    <span class="var">.</span>
+                                    <span class="variable">use</span>
+                                    <span class="braces-1">(</span>
+                                    <span class="lib">"/api/users"</span>
+                                    <span class="var">, </span>
+                                    <span class="var">router</span>
+                                    <span class="braces-1">)</span>
+                                    <br>
+                                    
+                                </div>
+                            </div>
+                            <span class="braces ps-2">{{ '}' }}</span>
+                        </div>
+                        
+                    </code>
+                  </div>
+                  <p class="summary">It sets up HTTP routes for the user API using the router, which correspond to the different user-related requests that can be made. Specifically:</p>
+                  <ul>
+                    <small><li>router.get('/', controller.findAll) sets up a route for finding all users.</li>
+                    <li>router.post('/', controller.create) sets up a route for creating a new user</li>
+                    <li>router.get('/:id', controller.findOne) sets up a route for finding a single user by their ID</li>
+                    <li>router.put('/:id', controller.update) sets up a route for updating a user by their ID.</li>
+                    <li>router.delete('/:id', controller.delete) sets up a route for deleting a user by their ID</li></small>
+                  </ul>
+                  <p>- The router is mounted onto the app using app.use("/api/users", router). This means that any HTTP request that matches the /api/users URL path will be handled by the router.</p>
+            </div>
+
+            <div class="final">
+                <h4 class="fw-bold">Finalising Our Server</h4>
+                <p class="content-route">
+                    Now that you done with your models, controllers and routes go back to the server.js file and edit it.
+                </p>
+                <div class="code-block py-2">
+                    <code>
+                        <span class="comment">
+                            // diractory -> server.js
+                            <br>
+                        </span>
+                        <div class="line">
+                            <span class="var">const</span>
+                            <span class="variable"> express </span>
+                            <span class="equi">=</span>
+                            <span class="variable"> require</span>
+                            <span class="braces">(</span>
+                            <span class="lib">'express'</span>
+                            <span class="braces">)</span>
+                        </div>
+                        <div class="line">
+                            <span class="var">const</span>
+                            <span class="variable"> cors </span>
+                            <span class="equi">=</span>
+                            <span class="variable"> require</span>
+                            <span class="braces">(</span>
+                            <span class="lib">'cors'</span>
+                            <span class="braces">)</span>
+                        </div>
+                       <span class="comment">... skip the lines till the "adding routes comment"</span> 
+                       <br>
+                       <span class="variable">require</span>
+                       <span class="braces">(</span>
+                       <span>"./app/routes/user.router"</span>
+                       <span class="braces">)</span>
+                       <span class="var">.</span>
+                       <span class="braces">(</span>
+                       <span class="var">app</span>
+                       <span class="braces">)</span>
+                       <br>
+                       <span class="comment">... The End ...</span>
+                    </code>
+                </div>
+                <div class="runnig">
+                    <h4 class="fw-bold">Running The App</h4>
+                    <p class="running">Now that the app is built, let's try to run it. Go to your terminal in the same directory and write <strong><code>node server.js</code></strong></p>
+                    <p>Once that is done go to the browser and use this address <code>http://localhost:8080</code> (please ensure you use the same port number you set before, in this case is: 8080)</p>
+                </div>
             </div>
         </div>
     </article>
