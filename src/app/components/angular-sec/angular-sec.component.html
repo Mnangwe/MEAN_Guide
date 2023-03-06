@@ -13,7 +13,7 @@
         using HttpClientModule. With this connection, we will be able to interact with our backend from
         frontend. Let's begin!
         <span class="api">
-            To see the development of -><a routerLink="/node" class="api" title="Node API">API</a>
+            To see the development of -><a routerLink="/node" class="api" name="Node API">API</a>
         </span>
     </p>
     <article class="main-content">
@@ -529,7 +529,7 @@
                     <span class="braces">}</span> -->
                     <br><br>
 
-                    <span class="variable">findByTitle</span>
+                    <span class="variable">findByname</span>
                     <span class="braces">(</span>
                     <span class="param">name</span>
                     <span class="var">:</span> 
@@ -568,215 +568,431 @@
             <div class="components">
               <h6>COMPONENTS</h6>
               <p>From the components we generated ealier on we will start to edit the code so that we could mount them to the browser. We will utilise our user service to gather the data where it is needed.</p>
-              <div class="code-block">
-                <code>
-                  <span class="comment">
-                    src/app/components/add-candidate/add-candidate.component.ts
-                  </span>
-                  <span class="declare module">import </span> 
-                  <span class="braces">{{'{'}} </span> 
-                  <span class="var">Component</span>
-                  <span class="braces">,</span>
-                  <span class="var"> OnInit </span>
-                  <span class="braces">}</span>
-                  <span class="declare module"> from </span>
-                  <span class="str">'@angular/core'</span>
-                  <span class="var">;</span>
-                  <br>
-                  <span class="declare module">import </span>
-                  <span class="braces">{{'{'}}</span>
-                  <span class="var"> User </span>
-                  <span class="braces">}</span>
-                  <span class="declare module"> from </span>
-                  <span class="str">'src/app/models/user.model'</span>
-                  <span class="var">;</span>
-                  <br>
-                  <span class="declare module">import </span>
-                  <span class="braces"> {{'{'}} </span>
-                  <span class="var"> UserService </span>
-                  <span class="braces">}</span>
-                  <span class="declare module"> from </span>
-                  <span class="str">'src/app/services/user.service'</span>
-                  <span class="var">;</span>
-                  <br><br>
-                  <span class="sp">@Component</span>
-                  <span class="braces">(</span>
-                  <span class="braces">{{'{'}}</span>
-                  
-                    <div class="inner ps-2">
-                      <span class="var">selector:</span>
-                      <span class="str">'app-add-user'</span>
-                      <span class="var">,</span>
-                      <br>
-                      <span class="var">templateUrl:</span>
-                      <span class="str">'./add-user.component.html'</span>
-                      <span class="var">,</span>
-                      <br>
-                      <span class="var">styleUrls:</span>
-                      <span class="braces">[</span>
-                      <span class="str">'./add-user.component.css'</span>
-                      <span class="braces">]</span>
-                    </div>
-                  <span class="braces">})</span>
-                  <br>
-                  <span class="declare module">export</span>
-                  <span class="declare"> class</span>
-                  <span class="var"> AddUserComponent </span>
-                  <span class="declare">implements</span>
-                  <span class="var"> OnInit </span>
-                  <span class="braces">{{'{'}}</span>
-                    <div class="inner ps-2">
-
-                    
-                    <span class="var">user:</span>
-                    <span class="variable">User</span>
-                    <span class="var">=</span>
-                    <span class="braces">{{'{'}}</span>
-                      <div class="inner ps-2">
-                        <span class="var">name:</span>
-                        <span class="str">''</span>
-                        <span class="var">,
-                          <br>
-                          surname:
-                        </span>
-                        <span class="str">''</span>
-                        <!-- <span class="var">,
-                          published:
-                        </span> -->
-                        <!-- <span class="token boolean">false</span> -->
-                      </div>
-                    <span class="braces">}</span>
-                    <span class="var">;</span>
-                    <br>
-                    <span class="var">submitted</span>
-                    <span class="var"> = </span>
-                    <span class="braces-1">false</span>
-                    <span class="var">;</span>
-                    <br>
-                    <span class="sp">constructor</span>
-                    <span class="braces"> (</span>
-                    <span class="token parameter">
-                      <span class="declare"> private</span> 
-                      <span class="param"> userService</span>
-                      <span class="var">:</span>
-                      <span class="variable"> UserService </span>
-                    </span>
-                    <span class="braces">) </span>
-                    <span class="braces">{{'{'}} }</span>
-                    <br><br>
-
-                    <span class="variable">ngOnInit</span>
-                    <span class="braces">()</span>
-                    <span class="var">:</span>
-                    <span class="declare">void</span>
-                    <span class="braces">{{'{'}} }</span>
-                    <br><br>
-                    <span class="variable">saveuser</span>
-                    <span class="braces">()</span>
-                    <span class="var">:</span>
-                    <span class="declare">void</span>
-                    <span class="braces">{{'{'}}</span>
-                    <div class="inner ps-2">
-                      <span class="declare">const</span> 
-                      <span class="var"> data = </span> 
-                      <span class="braces">{{'{'}}</span>
-                        <div class="inner ps-2">
-                          <span class="var">name:</span>
-                          <span class="declare">this</span>
-                          <span class="var">.user.name</span>
-                          <span class="var">,</span>
-                          <br>
-                          <span class="var">surname:</span>
-                          <span class="declare">this</span>
-                          <span class="var">.user.surname</span>
-                        </div>
+              
+              <div class="add-candidate">
+                <h4>Add A New Item</h4>
+                <p>This is the component we will use to add details a new user for our candidate's profile</p>
+                <div class="add-candidate-ts">
+                  <h6>
+                    <small class="fw-bold">
+                      To Add A Candidate
+                    </small>
+                  </h6>
+                  <div class="code-block">
+                    <code>
+                      <span class="comment">
+                        src/app/components/add-candidate/add-candidate.component.ts
+                      </span>
+                      <span class="declare module">import </span> 
+                      <span class="braces">{{'{'}} </span> 
+                      <span class="var">Component</span>
+                      <span class="braces">,</span>
+                      <span class="var"> OnInit </span>
                       <span class="braces">}</span>
-                      <span class="braces">;</span>
-                    </div>
-                      <br>
-                      <span class="declare">this</span>
-                      <span class="var">.userService.</span>
-                      <span class="variable">create</span>
-                      <span class="braces">(</span>
-                      <span class="var">data</span>
-                      <span class="braces">)</span>
-                        <span class="var">.</span>
-                        <span class="variable">subscribe</span>
-                        <span class="braces">({{'{'}}</span>
-                          <div class="inner ps-2">
-                            <span class="variable">next</span>
-                            <span class="var">:</span> 
-                            <span class="braces"> (</span>
-                            <span class="param">res</span>
-                            <span class="braces">)</span>
-                            <span class="token arrow operator"> =&gt; </span>
-                            <span class="braces">{{'{'}}</span>
-                              <div class="inner ps-2">
-                                <span class="var">console.</span>
-                                <span class="variable">log</span>
-                                <span class="braces">(</span>
-                                <span class="param">res</span>
-                                <span class="braces">)</span>
-                                <span class="var">;</span>
-                                <br>
-                                <span class="declare">this</span>
-                                <span class="var">.</span>
-                                <span class="token property-access">submitted</span>
-                                <span class="var"> = </span>
-                                <span class="braces-1">true</span>
-                                <span class="var">;</span>
-                              </div>
-                            <span class="braces">}</span>
-                            <span class="var">,</span>
-                            <br>
-                            <span class="variable">error</span>
-                            <span class="var">:</span>
-                            <span class="braces">(</span>
-                            <span class="param">e</span>
-                            <span class="braces">)</span>
-                            <span class="token arrow operator">=&gt;</span>
-                            <span class="var">console.</span>
-                            <span class="variable">error</span>
-                            <span class="braces">(</span>
-                            <span class="param">e</span>
-                            <span class="braces">)</span>
-                            <br>
-                          <span class="braces">}</span>
-                          <span class="braces">)</span>
-                          <span class="var">;</span>
-                          </div>
-                          
-                    <span class="braces">}</span>
-                    <br>
-                    <span class="variable">newuser</span>
-                    <span class="braces">()</span>
-                    <span class="var">:</span>
-                    <span class="declare">void</span>
-                    <span class="braces">{{'{'}}</span>
-                    <div class="inner ps-2">
-                      <span class="declare">this</span>
-                      <span class="var">.submitted = </span>
-                      <span class="braces-1">false</span>
+                      <span class="declare module"> from </span>
+                      <span class="str">'@angular/core'</span>
                       <span class="var">;</span>
                       <br>
-                      <span class="declare">this</span>
-                      <span class="var">.user = </span>
+                      <span class="declare module">import </span>
                       <span class="braces">{{'{'}}</span>
-                        title
-                        <span class="var">:</span>
-                        <span class="str">''</span>
-                        <span class="var">,</span>
-                        description<span class="var">:</span> <span class="str">''</span><span class="braces">,</span>
-                        published<span class="var">:</span> <span class="token boolean">false</span>
-                      <span class="braces">}</span><span class="braces">;</span>
-                    </div>
+                      <span class="var"> User </span>
+                      <span class="braces">}</span>
+                      <span class="declare module"> from </span>
+                      <span class="str">'src/app/models/user.model'</span>
+                      <span class="var">;</span>
+                      <br>
+                      <span class="declare module">import </span>
+                      <span class="braces"> {{'{'}} </span>
+                      <span class="var"> UserService </span>
+                      <span class="braces">}</span>
+                      <span class="declare module"> from </span>
+                      <span class="str">'src/app/services/user.service'</span>
+                      <span class="var">;</span>
+                      <br><br>
+                      <span class="sp">@Component</span>
+                      <span class="braces">(</span>
+                      <span class="braces">{{'{'}}</span>
                       
+                        <div class="inner ps-2">
+                          <span class="var">selector:</span>
+                          <span class="str">'app-add-user'</span>
+                          <span class="var">,</span>
+                          <br>
+                          <span class="var">templateUrl:</span>
+                          <span class="str">'./add-user.component.html'</span>
+                          <span class="var">,</span>
+                          <br>
+                          <span class="var">styleUrls:</span>
+                          <span class="braces">[</span>
+                          <span class="str">'./add-user.component.css'</span>
+                          <span class="braces">]</span>
+                        </div>
+                      <span class="braces">})</span>
+                      <br>
+                      <span class="declare module">export</span>
+                      <span class="declare"> class</span>
+                      <span class="var"> AddUserComponent </span>
+                      <span class="declare">implements</span>
+                      <span class="var"> OnInit </span>
+                      <span class="braces">{{'{'}}</span>
+                        <div class="inner ps-2">
+    
+                        
+                        <span class="var">user:</span>
+                        <span class="variable">User</span>
+                        <span class="var">=</span>
+                        <span class="braces">{{'{'}}</span>
+                          <div class="inner ps-2">
+                            <span class="var">name:</span>
+                            <span class="str">''</span>
+                            <span class="var">,
+                              <br>
+                              surname:
+                            </span>
+                            <span class="str">''</span>
+                            <!-- <span class="var">,
+                              published:
+                            </span> -->
+                            <!-- <span class="token boolean">false</span> -->
+                          </div>
+                        <span class="braces">}</span>
+                        <span class="var">;</span>
+                        <br>
+                        <span class="var">submitted</span>
+                        <span class="var"> = </span>
+                        <span class="braces-1">false</span>
+                        <span class="var">;</span>
+                        <br>
+                        <span class="sp">constructor</span>
+                        <span class="braces"> (</span>
+                        <span class="token parameter">
+                          <span class="declare"> private</span> 
+                          <span class="param"> userService</span>
+                          <span class="var">:</span>
+                          <span class="variable"> UserService </span>
+                        </span>
+                        <span class="braces">) </span>
+                        <span class="braces">{{'{'}} }</span>
+                        <br><br>
+    
+                        <span class="variable">ngOnInit</span>
+                        <span class="braces">()</span>
+                        <span class="var">:</span>
+                        <span class="declare">void</span>
+                        <span class="braces">{{'{'}} }</span>
+                        <br><br>
+                        <span class="variable">saveuser</span>
+                        <span class="braces">()</span>
+                        <span class="var">:</span>
+                        <span class="declare">void</span>
+                        <span class="braces">{{'{'}}</span>
+                        <div class="inner ps-2">
+                          <span class="declare">const</span> 
+                          <span class="var"> data = </span> 
+                          <span class="braces">{{'{'}}</span>
+                            <div class="inner ps-2">
+                              <span class="var">name:</span>
+                              <span class="declare">this</span>
+                              <span class="var">.user.name</span>
+                              <span class="var">,</span>
+                              <br>
+                              <span class="var">surname:</span>
+                              <span class="declare">this</span>
+                              <span class="var">.user.surname</span>
+                            </div>
+                          <span class="braces">}</span>
+                          <span class="braces">;</span>
+                        </div>
+                          <br>
+                          <span class="declare">this</span>
+                          <span class="var">.userService.</span>
+                          <span class="variable">create</span>
+                          <span class="braces">(</span>
+                          <span class="var">data</span>
+                          <span class="braces">)</span>
+                            <span class="var">.</span>
+                            <span class="variable">subscribe</span>
+                            <span class="braces">({{'{'}}</span>
+                              <div class="inner ps-2">
+                                <span class="variable">next</span>
+                                <span class="var">:</span> 
+                                <span class="braces"> (</span>
+                                <span class="param">res</span>
+                                <span class="braces">)</span>
+                                <span class="token arrow operator"> =&gt; </span>
+                                <span class="braces">{{'{'}}</span>
+                                  <div class="inner ps-2">
+                                    <span class="var">console.</span>
+                                    <span class="variable">log</span>
+                                    <span class="braces">(</span>
+                                    <span class="param">res</span>
+                                    <span class="braces">)</span>
+                                    <span class="var">;</span>
+                                    <br>
+                                    <span class="declare">this</span>
+                                    <span class="var">.</span>
+                                    <span class="token property-access">submitted</span>
+                                    <span class="var"> = </span>
+                                    <span class="braces-1">true</span>
+                                    <span class="var">;</span>
+                                  </div>
+                                <span class="braces">}</span>
+                                <span class="var">,</span>
+                                <br>
+                                <span class="variable">error</span>
+                                <span class="var">:</span>
+                                <span class="braces">(</span>
+                                <span class="param">e</span>
+                                <span class="braces">)</span>
+                                <span class="token arrow operator">=&gt;</span>
+                                <span class="var">console.</span>
+                                <span class="variable">error</span>
+                                <span class="braces">(</span>
+                                <span class="param">e</span>
+                                <span class="braces">)</span>
+                                <br>
+                              <span class="braces">}</span>
+                              <span class="braces">)</span>
+                              <span class="var">;</span>
+                              </div>
+                              
+                        <span class="braces">}</span>
+                        <br>
+                        <span class="variable">newuser</span>
+                        <span class="braces">()</span>
+                        <span class="var">:</span>
+                        <span class="declare">void</span>
+                        <span class="braces">{{'{'}}</span>
+                        <div class="inner ps-2">
+                          <span class="declare">this</span>
+                          <span class="var">.submitted = </span>
+                          <span class="braces-1">false</span>
+                          <span class="var">;</span>
+                          <br>
+                          <span class="declare">this</span>
+                          <span class="var">.user = </span>
+                          <span class="braces">{{'{'}}</span>
+                            <div class="inner ps-2">
+                              <span class="var">name:</span>
+                              <span class="str">''</span>
+                              <span class="var">,
+                                <br>
+                              surname:</span> 
+                              <span class="str">''</span>
+                            </div>
+                          <span class="braces">}</span>
+                          <span class="var">;</span>
+                        </div>
+                          
+                        <span class="braces">}</span>
+                        </div>
+                      
+                      <span class="braces">}</span>
+                      </code>
+                  </div>
+                </div>
+
+                <div class="add-candidate-html">
+                  <h6><small class="fw-bold">
+                    Template For The Add-Candidate Component 
+                  </small></h6>
+                  <div class="code-block">
+                    <span class="comment">
+                      src/app/components/add-candidate/add-candidate.component.html
+                    </span>
+                    <code class=" language-markup">
+                      <span class="token tag">
+                        <span class="token tag">
+                          <span class="var">&lt;</span>div</span><span class="var">&gt;</span></span><br>
+                      <span class="token tag"><span class="token tag"><span class="var">&lt;</span>div</span> <span class="token variable"> class</span><span class="token sp"><span class="var">=</span><span class="var">"</span>submit-form<span class="var">"</span></span><span class="var">&gt;</span></span><br>
+                        <span class="token tag"><span class="token tag"><span class="var">&lt;</span>div</span> <span class="token variable">*ngIf</span><span class="token sp"><span class="var">=</span><span class="var">"</span>!submitted<span class="var">"</span></span><span class="var">&gt;</span></span><br>
+                          <span class="token tag"><span class="token tag"><span class="var">&lt;</span>div</span> <span class="token variable">class</span><span class="token sp"><span class="var">=</span><span class="var">"</span>form-group<span class="var">"</span></span><span class="var">&gt;</span></span><br>
+                            <span class="token tag"><span class="token tag"><span class="var">&lt;</span>label</span> <span class="token variable">for</span><span class="token sp"><span class="var">=</span><span class="var">"</span>name<span class="var">"</span></span><span class="var">&gt;</span></span>Name<span class="token tag"><span class="token tag"><span class="var">&lt;/</span>label</span><span class="var">&gt;</span></span>
+                            <span class="token tag"><span class="token tag"><span class="var">&lt;</span>input</span>
+                              <span class="token variable">type</span><span class="token sp"><span class="var">=</span><span class="var">"</span>text<span class="var">"</span></span>
+                              <span class="token variable">class</span><span class="token sp"><span class="var">=</span><span class="var">"</span>form-control<span class="var">"</span></span>
+                              <span class="token variable">id</span><span class="token sp"><span class="var">=</span><span class="var">"</span>name<span class="var">"</span></span>
+                              <span class="token variable">required</span>
+                              <span class="token variable">[(ngModel)]</span><span class="token sp"><span class="var">=</span><span class="var">"</span>tutorial.name<span class="var">"</span></span>
+                              <span class="token variable">name</span><span class="token sp"><span class="var">=</span><span class="var">"</span>name<span class="var">"</span></span>
+                            <span class="var">/&gt;</span></span>
+                          <span class="token tag"><span class="token tag"><span class="var">&lt;/</span>div</span><span class="var">&gt;</span></span>
+                    
+                          <span class="token tag"><span class="token tag"><span class="var">&lt;</span>div</span> <span class="token variable">class</span><span class="token sp"><span class="var">=</span><span class="var">"</span>form-group<span class="var">"</span></span><span class="var">&gt;</span></span>
+                            <span class="token tag"><span class="token tag"><span class="var">&lt;</span>label</span> <span class="token variable">for</span><span class="token sp"><span class="var">=</span><span class="var">"</span>description<span class="var">"</span></span><span class="var">&gt;</span></span>Description<span class="token tag"><span class="token tag"><span class="var">&lt;/</span>label</span><span class="var">&gt;</span></span>
+                            <span class="token tag"><span class="token tag"><span class="var">&lt;</span>input</span>
+                              <span class="token variable">class</span><span class="token sp"><span class="var">=</span><span class="var">"</span>form-control<span class="var">"</span></span>
+                              <span class="token variable">id</span><span class="token sp"><span class="var">=</span><span class="var">"</span>description<span class="var">"</span></span>
+                              <span class="token variable">required</span>
+                              <span class="token variable">[(ngModel)]</span><span class="token sp"><span class="var">=</span><span class="var">"</span>tutorial.description<span class="var">"</span></span>
+                              <span class="token variable">name</span><span class="token sp"><span class="var">=</span><span class="var">"</span>description<span class="var">"</span></span>
+                            <span class="var">/&gt;</span></span>
+                          <span class="token tag"><span class="token tag"><span class="var">&lt;/</span>div</span><span class="var">&gt;</span></span>
+                    
+                          <span class="token tag"><span class="token tag"><span class="var">&lt;</span>button</span> <span class="token variable">(click)</span><span class="token sp"><span class="var">=</span><span class="var">"</span>saveTutorial()<span class="var">"</span></span> <span class="token variable">class</span><span class="token sp"><span class="var">=</span><span class="var">"</span>btn btn-success<span class="var">"</span></span><span class="var">&gt;</span></span>Submit<span class="token tag"><span class="token tag"><span class="var">&lt;/</span>button</span><span class="var">&gt;</span></span>
+                        <span class="token tag"><span class="token tag"><span class="var">&lt;/</span>div</span><span class="var">&gt;</span></span>
+                    
+                        <span class="token tag"><span class="token tag"><span class="var">&lt;</span>div</span> <span class="token variable">*ngIf</span><span class="token sp"><span class="var">=</span><span class="var">"</span>submitted<span class="var">"</span></span><span class="var">&gt;</span></span>
+                          <span class="token tag"><span class="token tag"><span class="var">&lt;</span>h4</span><span class="var">&gt;</span></span>Tutorial was submitted successfully!<span class="token tag"><span class="token tag"><span class="var">&lt;/</span>h4</span><span class="var">&gt;</span></span>
+                          <span class="token tag"><span class="token tag"><span class="var">&lt;</span>button</span> <span class="token variable">class</span><span class="token sp"><span class="var">=</span><span class="var">"</span>btn btn-success<span class="var">"</span></span> <span class="token variable">(click)</span><span class="token sp"><span class="var">=</span><span class="var">"</span>newTutorial()<span class="var">"</span></span><span class="var">&gt;</span></span>Add<span class="token tag"><span class="token tag"><span class="var">&lt;/</span>button</span><span class="var">&gt;</span></span>
+                        <span class="token tag"><span class="token tag"><span class="var">&lt;/</span>div</span><span class="var">&gt;</span></span>
+                      <span class="token tag"><span class="token tag"><span class="var">&lt;/</span>div</span><span class="var">&gt;</span></span>
+                    <span class="token tag"><span class="token tag"><span class="var">&lt;/</span>div</span><span class="var">&gt;</span></span>
+                    </code>
+                  </div>
+                </div>
+
+                <div class="add-candidate-css">
+                  <h6><small class="fw-bold">
+                    Styles For The Add-Candidate Component
+                  </small></h6>
+                  <div class="code-block">
+                    <span class="comment">
+                      src/app/components/add-candidate/add-candidate.component.css
+                    </span>
+                    <code class=" language-css">
+                      <span class="token selector">.submit-form</span> <span class="braces">{{'{'}}</span>
+                      <div class="inner ps-2">
+                        <span class="token property">max-width</span>
+                        <span class="braces">:</span> 
+                        400px
+                        <span class="braces">;</span>
+                        <br>
+                        <span class="token property">margin</span>
+                        <span class="braces">:</span> 
+                        auto
+                        <span class="braces">;</span>
+                     
+                      </div>
                     <span class="braces">}</span>
-                    </div>
-                  
-                  <span class="braces">}</span>
-                  </code>
+                    </code>
+                  </div>
+                </div>
+
               </div>
+              <div class="candidates-list">
+                <h4>List Of All Users</h4>
+                <p>This is a component to show our users from the database</p>
+
+                <div class="candidates-list-ts">
+                  <div class="code-block">
+                    <code class=" language-js">
+                      <span class="declare module">import</span> 
+                      <span class="braces">{{'{'}}</span> 
+                      <span class="var">Component</span>
+                      <span class="braces">,</span> 
+                      <span class="var">OnInit</span> 
+                      <span class="braces">}</span> 
+                      <span class="declare module">from</span> 
+                      <span class="str">'@angular/core'</span>
+                      <span class="braces">;</span>
+                      <br>
+                      <span class="declare module">import</span> 
+                      <span class="braces">{{'{'}}</span> 
+                      <span class="var">Tutorial</span> 
+                      <span class="braces">}</span> 
+                      <span class="declare module">from</span> 
+                      <span class="str">'src/app/models/tutorial.model'</span>
+                      <span class="braces">;</span>
+                      <br>
+                      <span class="declare module">import</span> 
+                      <span class="braces">{{'{'}}</span> 
+                      <span class="var">TutorialService</span> 
+                      <span class="braces">}</span> 
+                      <span class="declare module">from</span> 
+                      <span class="str">'src/app/services/tutorial.service'</span>
+                      <span class="braces">;</span>
+                      <br><br>
+                      <span class="variable"><span class="sp">@Component</span></span><span class="braces">({{'{'}}</span>
+                      <div class="inner ps-2">
+                        <span class="var">selector:</span> 
+                        <span class="str">'app-tutorials-list'</span><span class="var">,</span><br>
+                        <span class="var">templateUrl:</span> 
+                        <span class="str">'./tutorials-list.component.html'</span>
+                        <span class="var">,</span><br>
+                        <span class="var">styleUrls:</span> 
+                        <span class="braces">[</span>
+                        <span class="str">'./tutorials-list.component.css'</span>
+                        <span class="braces">]</span>
+                      </div>
+                      <span class="braces">}</span><span class="braces">)</span>
+                      <br>
+                     <span class="declare module">export</span> <span class="declare"> class </span> <span class="var">TutorialsListComponent </span> <span class="declare">implements</span> <span class="var"> OnInit </span> <span class="braces">{{'{'}}</span>
+                      <div class="inner ps-2">
+                        <span class="var">tutorials?:</span> 
+                        <span class="variable">Tutorial</span><span class="braces">[</span><span class="braces">]</span><span class="braces">;</span>
+                        currentTutorial<span class="var">:</span> <span class="var">Tutorial</span> <span class="var">=</span> <span class="braces">{{'{'}}</span><span class="braces">}</span><span class="braces">;</span>
+                        currentIndex <span class="var">=</span> <span class="var">-</span><span class="token number">1</span><span class="braces">;</span>
+                        title <span class="var">=</span> <span class="str">''</span><span class="braces">;</span>
+                      
+                        <span class="variable">constructor</span><span class="braces">(</span><span class="token parameter"><span class="declare">private</span> tutorialService<span class="var">:</span> <span class="var">TutorialService</span></span><span class="braces">)</span> <span class="braces">{{'{'}}</span> <span class="braces">}</span>
+                      
+                        <span class="variable">ngOnInit</span><span class="braces">(</span><span class="braces">)</span><span class="var">:</span> <span class="declare">void</span> <span class="braces">{{'{'}}</span>
+                          <span class="declare">this</span><span class="braces">.</span><span class="token method variable property-access">retrieveTutorials</span><span class="braces">(</span><span class="braces">)</span><span class="braces">;</span>
+                        <span class="braces">}</span>
+                      
+                        <span class="variable">retrieveTutorials</span><span class="braces">(</span><span class="braces">)</span><span class="var">:</span> <span class="declare">void</span> <span class="braces">{{'{'}}</span>
+                          <span class="declare">this</span><span class="braces">.</span><span class="token property-access">tutorialService</span><span class="braces">.</span><span class="token method variable property-access">getAll</span><span class="braces">(</span><span class="braces">)</span>
+                            <span class="braces">.</span><span class="token method variable property-access">subscribe</span><span class="braces">(</span><span class="braces">{{'{'}}</span>
+                              <span class="variable-variable variable">next</span><span class="var">:</span> <span class="braces">(</span><span class="token parameter">data</span><span class="braces">)</span> <span class="token arrow operator">=&gt;</span> <span class="braces">{{'{'}}</span>
+                                <span class="declare">this</span><span class="braces">.</span><span class="token property-access">tutorials</span> <span class="var">=</span> data<span class="braces">;</span>
+                                <span class="token console class-name">console</span><span class="braces">.</span><span class="token method variable property-access">log</span><span class="braces">(</span>data<span class="braces">)</span><span class="braces">;</span>
+                              <span class="braces">}</span><span class="braces">,</span>
+                              <span class="variable-variable variable">error</span><span class="var">:</span> <span class="braces">(</span><span class="token parameter">e</span><span class="braces">)</span> <span class="token arrow operator">=&gt;</span> <span class="token console class-name">console</span><span class="braces">.</span><span class="token method variable property-access">error</span><span class="braces">(</span>e<span class="braces">)</span>
+                            <span class="braces">}</span><span class="braces">)</span><span class="braces">;</span>
+                        <span class="braces">}</span>
+                      
+                        <span class="variable">refreshList</span><span class="braces">(</span><span class="braces">)</span><span class="var">:</span> <span class="declare">void</span> <span class="braces">{{'{'}}</span>
+                          <span class="declare">this</span><span class="braces">.</span><span class="token method variable property-access">retrieveTutorials</span><span class="braces">(</span><span class="braces">)</span><span class="braces">;</span>
+                          <span class="declare">this</span><span class="braces">.</span><span class="token property-access">currentTutorial</span> <span class="var">=</span> <span class="braces">{{'{'}}</span><span class="braces">}</span><span class="braces">;</span>
+                          <span class="declare">this</span><span class="braces">.</span><span class="token property-access">currentIndex</span> <span class="var">=</span> <span class="var">-</span><span class="token number">1</span><span class="braces">;</span>
+                        <span class="braces">}</span>
+                      
+                        <span class="variable">setActiveTutorial</span><span class="braces">(</span>tutorial<span class="var">:</span> <span class="var">Tutorial</span><span class="braces">,</span> index<span class="var">:</span> number<span class="braces">)</span><span class="var">:</span> <span class="declare">void</span> <span class="braces">{{'{'}}</span>
+                          <span class="declare">this</span><span class="braces">.</span><span class="token property-access">currentTutorial</span> <span class="var">=</span> tutorial<span class="braces">;</span>
+                          <span class="declare">this</span><span class="braces">.</span><span class="token property-access">currentIndex</span> <span class="var">=</span> index<span class="braces">;</span>
+                        <span class="braces">}</span>
+                      
+                        <span class="variable">removeAllTutorials</span><span class="braces">(</span><span class="braces">)</span><span class="var">:</span> <span class="declare">void</span> <span class="braces">{{'{'}}</span>
+                          <span class="declare">this</span><span class="braces">.</span><span class="token property-access">tutorialService</span><span class="braces">.</span><span class="token method variable property-access">deleteAll</span><span class="braces">(</span><span class="braces">)</span>
+                            <span class="braces">.</span><span class="token method variable property-access">subscribe</span><span class="braces">(</span><span class="braces">{{'{'}}</span>
+                              <span class="variable-variable variable">next</span><span class="var">:</span> <span class="braces">(</span><span class="token parameter">res</span><span class="braces">)</span> <span class="token arrow operator">=&gt;</span> <span class="braces">{{'{'}}</span>
+                                <span class="token console class-name">console</span><span class="braces">.</span><span class="token method variable property-access">log</span><span class="braces">(</span>res<span class="braces">)</span><span class="braces">;</span>
+                                <span class="declare">this</span><span class="braces">.</span><span class="token method variable property-access">refreshList</span><span class="braces">(</span><span class="braces">)</span><span class="braces">;</span>
+                              <span class="braces">}</span><span class="braces">,</span>
+                              <span class="variable-variable variable">error</span><span class="var">:</span> <span class="braces">(</span><span class="token parameter">e</span><span class="braces">)</span> <span class="token arrow operator">=&gt;</span> <span class="token console class-name">console</span><span class="braces">.</span><span class="token method variable property-access">error</span><span class="braces">(</span>e<span class="braces">)</span>
+                            <span class="braces">}</span><span class="braces">)</span><span class="braces">;</span>
+                        <span class="braces">}</span>
+                      
+                        <span class="variable">searchTitle</span><span class="braces">(</span><span class="braces">)</span><span class="var">:</span> <span class="declare">void</span> <span class="braces">{{'{'}}</span>
+                          <span class="declare">this</span><span class="braces">.</span><span class="token property-access">currentTutorial</span> <span class="var">=</span> <span class="braces">{{'{'}}</span><span class="braces">}</span><span class="braces">;</span>
+                          <span class="declare">this</span><span class="braces">.</span><span class="token property-access">currentIndex</span> <span class="var">=</span> <span class="var">-</span><span class="token number">1</span><span class="braces">;</span>
+                      
+                          <span class="declare">this</span><span class="braces">.</span><span class="token property-access">tutorialService</span><span class="braces">.</span><span class="token method variable property-access">findByTitle</span><span class="braces">(</span><span class="declare">this</span><span class="braces">.</span><span class="token property-access">title</span><span class="braces">)</span>
+                            <span class="braces">.</span><span class="token method variable property-access">subscribe</span><span class="braces">(</span><span class="braces">{{'{'}}</span>
+                              <span class="variable-variable variable">next</span><span class="var">:</span> <span class="braces">(</span><span class="token parameter">data</span><span class="braces">)</span> <span class="token arrow operator">=&gt;</span> <span class="braces">{{'{'}}</span>
+                                <span class="declare">this</span><span class="braces">.</span><span class="token property-access">tutorials</span> <span class="var">=</span> data<span class="braces">;</span>
+                                <span class="token console class-name">console</span><span class="braces">.</span><span class="token method variable property-access">log</span><span class="braces">(</span>data<span class="braces">)</span><span class="braces">;</span>
+                              <span class="braces">}</span><span class="braces">,</span>
+                              <span class="variable-variable variable">error</span><span class="var">:</span> <span class="braces">(</span><span class="token parameter">e</span><span class="braces">)</span> <span class="token arrow operator">=&gt;</span> <span class="token console class-name">console</span><span class="braces">.</span><span class="token method variable property-access">error</span><span class="braces">(</span>e<span class="braces">)</span>
+                            <span class="braces">}</span><span class="braces">)</span><span class="braces">;</span>
+                        <span class="braces">}</span>
+                      </div>
+                        
+                      
+                      <span class="braces">}</span>
+                      </code>
+                  </div>
+                </div>
+
+                <div class="candidates-list-html"></div>
+
+                <div class="candidates-list-css"></div>
+              </div>
+              
+
+
+              
             </div>
         </div>
     </article>
