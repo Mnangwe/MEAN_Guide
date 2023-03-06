@@ -44,7 +44,9 @@
                     <span class="comment">
                         // ng new [name of your application]
                     </span>
-                    $ ng new crud-api-application
+                    $ ng new crud-api-application <br>
+                    $ Would you like to add Angular routing? Yes <br>
+                    $ Which stylesheet format would you like to use? CSS  <br>
                 </code>
             </div>
             <p>
@@ -69,15 +71,28 @@
                     $ ng generate component components/candidate-details <br>
                     $ ng generate component components/candidates-list <br>
                     $ ng generate component components/navbar <br>
+                    <br>
                     $ ng generate service services/user <br>
                 </code>
             </div>
-            <div class="routing">
+
+            <div class="app-structure">
+              <h6>APP STRIUCTURE</h6>
+              <p>When we done with these commands you should have a strucure similar to the one below. This is an Angular app strucure.</p>
+              <div class="image">
+                <img src="https://i.postimg.cc/kGWj69sD/Screenshot-2023-03-06-at-07-25-27.png" alt="" id="app-image">
+              </div>
+            </div>
+
+            <div class="routing mt-2">
                 <h6>
                     APP ROUTING MODULE
                 </h6>
                 <div class="code-block">
                     <code>
+                      <span class="comment">
+                        // src/app/app-routing.module.ts
+                      </span>
                         <table data-hpc="" class="highlight tab-size js-file-line-container js-code-nav-container js-tagsearch-file" data-tab-size="2" data-paste-markdown-skip="" data-tagsearch-lang="TypeScript" data-tagsearch-path="angular-15-client/src/app/app-routing.module.ts">
                             <tbody><tr>
                               <td id="L1" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="1"></td>
@@ -135,7 +150,7 @@
                             </tr>
                             <tr>
                               <td id="L14" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="14"></td>
-                              <td id="LC14" class="var">@<span class="variable">NgModule</span><span class="braces">(</span><span class="braces">{{'{'}}</span></td>
+                              <td id="LC14" class="var"><span class="sp">@NgModule</span><span class="braces">(</span><span class="braces">{{'{'}}</span></td>
                             </tr>
                             <tr>
                               <td id="L15" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="15"></td>
@@ -151,13 +166,14 @@
                             </tr>
                             <tr>
                               <td id="L18" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="18"></td>
-                              <td id="LC18" class="blob-code blob-code-inner js-file-line"><span class="pl-k">export</span> <span class="declare"> class </span> <span class="var">AppRoutingModule</span> <span class="braces">{{'{'}}</span> <span class="braces">{{'}'}}</span></td>
+                              <td id="LC18" class="blob-code blob-code-inner js-file-line"><span class="pl-k">export</span> <span class="declare"> class </span> <span class="var">AppRoutingModule</span><span class="braces">{{' {'}} {{'}'}}</span></td>
                             </tr>
                       </tbody></table>
                     </code>
                 </div>
             </div>
-            <div class="app-module">
+
+            <div class="app-module ">
                 <h6>
                     APP MODULE
                 </h6>
@@ -165,27 +181,597 @@
                     For us to be able to communicate with our API we need to import HTTP CLIENT MODULE from angular/common, this will enable http communication from our frontend to the backend through the API endpoints.
                 </p>
                 <div class="code-block">
-                  <code class="animated fadeIn">
-                    <span class="comment">
-                      // src/app/app.module.ts
+                  <code class=" language-js">
+                    <span class="token spread operator">...</span>
+                    <br>
+                    <span class="declare module">import </span>
+                    <span class="braces">{{'{'}}</span> 
+                    <span class="var"> FormsModule </span>
+                    <span class="braces">} </span>
+                    <span class="declare module">from </span>
+                    <span class="lib">'@angular/forms'</span>
+                    <br>
+                    <span class="declare module">import </span> 
+                    <span class="braces">{{'{'}}</span> 
+                    <span class="var"> HttpClientModule </span> 
+                    <span class="braces">} </span> 
+                    <span class="declare module">from </span> 
+                    <span class="lib">'@angular/common/http'</span>
+                    <br>
+                    <span class="sp">@NgModule</span>
+                    <span class="braces">({{'{'}}</span>
+                    <br>
+                    <div class="inner ps-2">
+                    <span class="var">declarations:</span>
+                    <span class="braces">[...]</span>
+                    <span class="var">,</span>
+                    <br>
+                    <span class="var">imports:</span> 
+                    <span class="braces">[</span>
+                      <div class="inner ps-2">
+                        <span class="var">...,</span>
+                        <br>
+                        <span class="variable">FormsModule</span>
+                        <span class="var">,</span>
+                        <br>
+                        <span class="variable">HttpClientModule</span>
+                      </div>
+                    <span class="braces">],</span>
+                    <br>
+                    <span class="var">providers:</span> 
+                    <span class="braces">[],</span>
+                    <br>
+                    <span class="var"> bootstrap:</span> 
+                    <span class="braces">[</span>
+                    <span class="variable">AppComponent</span>
+                    <span class="braces">]</span>
+                    <br>
+                    </div>
+                    <span class="braces">})</span>
+                    <br>
+                    <span class="declare module">export</span> 
+                    <span class="declare"> class </span> 
+                    <span class="var">AppModule </span> 
+                    <span class="braces">{{'{ '}} }</span>
+                    </code>
+                </div>
+                
+            </div>
+
+            <div class="interfaces">
+              <h6>INTERFACE</h6>
+              <p>
+                In typecript we using interfaces or classes to inform our own datatype (custom datatype). According to OOP programming paradigm
+                classes are blueprints of an object, meaning you could create an instance of a class as an object. So in typecript we could use
+                interfaces or classes interchangeable for type-checking, however classes carries implementation and blueprint of objects and interfaces
+                carries the shape of which an object is structured.
+              </p>
+              <p>
+                In this User we use these structures to map the data we storing in our database. In this case we should have the same structure as our
+                mongodb model, the one we created for our API as we need to map that data into the front. Read more about <a href="https://ultimatecourses.com/blog/classes-vs-interfaces-in-typescript#:~:text=A%20class%20is%20a%20blueprint,implementation%20nor%20initialisation%20for%20them." target="_blank" rel="noopener noreferrer">interfaces vs classes</a>.
+              </p>
+              <div class="code-block">
+                <code class=" language-js">
+                  <span class="comment">
+                    // src/app/interfaces/user.ts
+                  </span>
+                  <span class="declare module">export</span>
+                  <span class="declare"> class </span>
+                  <span class="var">User </span>
+                  <span class="braces">{{'{'}}</span>
+                  <br>
+                  <div class="inner ps-2">
+                    <span class="var">id?: </span>
+                    <span class="sp">string</span>
+                    <span class="var">;</span>
+                    <br>
+                    <span class="var">name?: </span>
+                    <span class="sp">string</span>
+                    <span class="var">;</span>
+                    <br>
+                    <span class="var">surname?: </span>
+                    <span class="sp">string</span>
+                    <span class="var">;</span>
+                    <br>
+                    <span class="var">age?: </span>
+                    <span class="sp">number</span>
+                    <span class="var">;</span>
+                    <br>
+                    <span class="var">about?: </span>
+                    <span class="sp">string</span>
+                    <span class="var">;</span>
+                    <br>
+                    <span class="var">interest?: </span>
+                    <span class="sp">string</span>
+                    <span class="var">;</span>
+                    <br>
+                    <span class="var">strength?: </span>
+                    <span class="sp">string</span>
+                    <span class="var">;</span>
+                    <br>
+                  </div>
+                  <span class="braces">}</span>
+                </code>
+              </div>
+            </div>
+
+            <div class="services">
+              <h6>SERVICES</h6>
+              <p>This is a section where we will use our api and haddles the fuctionality that will communicate with our backend using HTTP CLIENT</p>
+              <div class="code-block">
+                <code class=" language-js">
+                  <span class="declare module">import </span> 
+                  <span class="braces">{{'{'}}</span> 
+                  <span class="var"> Injectable </span> 
+                  <span class="braces">}</span> 
+                  <span class="declare module"> from </span> 
+                  <span class="lib">'@angular/core'</span>
+                  <span class="braces">;</span>
+                  <br>
+                  <span class="declare module">import </span> 
+                  <span class="braces">{{'{'}}</span> 
+                  <span class="var"> HttpClient </span> 
+                  <span class="braces">}</span> 
+                  <span class="declare module"> from </span> 
+                  <span class="lib">'@angular/common/http'</span>
+                  <span class="braces">;</span>
+                  <br>
+                  <span class="declare module">import </span> 
+                  <span class="braces">{{'{'}}</span> 
+                  <span class="var"> Observable </span> 
+                  <span class="braces">}</span> 
+                  <span class="declare module"> from </span> 
+                  <span class="lib">'rxjs'</span>
+                  <span class="braces">;</span>
+                  <br>
+                  <span class="declare module">import </span> 
+                  <span class="braces">{{'{'}}</span> 
+                  
+                  <span class="var"> User </span> 
+                  <span class="braces">}</span> 
+                  <span class="declare module"> from </span> 
+                  <span class="lib">'../models/User.model'</span>
+                  <span class="braces">;</span>
+                  <br>
+                  <span class="declare">const</span> 
+                   
+                  <span class="var"> baseUrl</span> =
+                  <span class="lib">'http://localhost:8080/api/Users'</span>
+                  <br>
+                  <span class="sp">@Injectable</span>
+                  <span class="braces"> (</span>
+                  <span class="braces">{{'{'}}</span>
+                  <div class="inner ps-2">
+                    <span class="var"> providedIn:</span> 
+                    <span class="lib"> 'root' </span>
+                  </div>
+                  <span class="braces">}</span>
+                  <span class="braces">)</span>
+                  <br>
+                  <span class="declare module">export</span> 
+                  <span class="declare"> class </span> 
+                  <span class="var">UserService </span> 
+                  <span class="braces">{{'{'}}</span>
+                  <br>
+                    <div class="inner ps-2">
+                      <span class="sp">constructor</span>
+                    <span class="braces">(</span>
+                    <span class="token parameter">
+                      <span class="declare"> private</span> 
+                      <span class="param"> http</span>
+                      <span class="var">:</span> 
+                      <span class="variable"> HttpClient </span>
                     </span>
-                    
-                      <span class="kwd">import</span>
-                      <span class="braces">{{' {'}}</span>
-                      <span class="var"> HttpClientModule</span>
-                      <span class="braces">}</span>
-                      <span class="kwd"> from </span>
-                      <span class="lib">'@angular/common/http</span>
+                    <span class="braces">)</span> 
+                    <span class="braces"> {{'{ '}}</span> 
+                    <span class="braces">}</span>
+                    <br><br>
+                    <span class="variable">getAll</span>
+                    <span class="braces">(</span>
+                    <span class="braces">)</span>
+                    <span class="var">:</span> 
+                    <span class="variable">Observable</span>
+                    <span class="var">&lt;</span>
+                    <span class="variable">User</span>
+                    <span class="braces">[</span>
+                    <span class="braces">]</span>
+                    <span class="var">&gt;</span> 
+                    <span class="braces">{{'{'}}</span>
+                      <div class="inner ps-2">
+                        <span class="declare">return </span> 
+                        <span class="param">this</span>
+                        <span class="var">.</span>
+                        <span class="var">http.</span>
+                        <span class="variable">get</span>
+                        <span class="var">&lt;</span>
+                        <span class="variable">User</span>
+                        <span class="braces">[</span>
+                        <span class="braces">]</span>
+                        <span class="var">&gt;</span>
+                        <span class="braces">(</span>
+                        <span class="var">baseUrl</span>
+                        <span class="braces">)</span>
+                        <span class="var">;</span>
+                      </div>
+                    <span class="braces">}</span>
+                    <br>
+                    <br>
+                    <span class="variable">get</span>
+                    <span class="braces">(</span>
+                    <span class="param"> id</span>
+                    <span class="var">:</span> 
+                    <span class="sp">string </span>
+                    <span class="braces">)</span>
+                    <span class="var">:</span> 
+                    <span class="variable">Observable</span>
+                    <span class="var">&lt;</span>
+                    <span class="variable">User</span>
+                    <span class="var">&gt;</span> 
+                    <span class="braces">{{'{'}}</span>
+                    <div class="inner ps-2">
+                      <span class="declare">return </span> 
+                      <span class="param">this</span>
+                      <span class="braces">.</span>
+                      <span class="var">http.</span>
+                      <span class="variable">get</span>
+                      <span class="var">&lt;</span>
+                      <span class="variable">User</span>
+                      <span class="var">&gt;</span>
+                      <span class="braces">(</span>
+                      
+                        <span class="var">`</span>
+                        <span class="var">
+                          <span class="brace">${{'{'}}</span>
+                          <span class="var">baseUrl</span>
+                          <span class="braces">}</span>
+                        
+                        <span class="var">/</span>
+                        
+                          <span class="braces">${{'{'}}</span>
+                          <span class="param">id</span>
+                          <span class="braces">}</span>
+                        
+                        <span class="token template-punctuation string">`</span>
+                      </span>
+                      <span class="braces">)</span>
+                      <span class="var">;</span>
+                    </div>
+                    <span class="braces">}</span>
+                    <br><br>
+                    <span class="variable">create</span>
+                    <span class="braces">(</span>
+                    <span class="param"> data</span>
+                    <span class="var">:</span> 
+                    <span class="variable">User </span>
+                    <span class="braces">)</span>
+                    <span class="var">:</span> 
+                    <span class="variable">Observable</span>
+                    <span class="var">&lt;</span>
+                    <span class="variable">User</span>
+                    <span class="var">&gt; </span> 
+                    <span class="braces">{{'{'}}</span>
+                    <div class="inner ps-2">
+                      <span class="declare">return </span> 
+                      <span class="param">this</span>
+                      <span class="var">.http.</span>
+                      <span class="variable">post</span>
+                      <span class="braces">(</span>
+                      <span class="var">baseUrl,</span> 
+                      <span class="param">data</span>
+                      <span class="braces">)</span>
+                      <span class="var">;</span>
+                    </div>
+                    <span class="braces">}</span>
+                    <br><br>
+
+                    <span class="variable">update</span>
+                    <span class="braces">(</span>
+                    <span class="param">id</span>
+                    <span class="var">:</span> 
+                    <span class="sp">string</span>
+                    <span class="braces">,</span> 
+                    <span class="param">data</span>
+                    <span class="var">:</span>
+                    <span class="sp">any</span>
+                    <span class="braces">)</span>
+                    <span class="var">:</span> 
+                    <span class="variable">Observable</span>
+                    <span class="var">&lt;</span>
+                    <span class="sp">any</span>
+                    <span class="var">&gt; </span>
+                    <span class="braces">{{'{'}}</span>
+                    <br>
+                    <div class="inner ps-2">
+                      <span class="declare">return </span>
+                      <span class="param">this</span>
+                      <span class="var">.http.</span>
+                      <span class="variable">put</span>
+                      <span class="braces">(</span>
+                      <span class="var">`${{'{'}}baseUrl}/${{'{'}}</span>
+                        <span class="param">id</span>
+                      <span class="var">}`,</span> 
+                      <span class="param">data</span>
+                      <span class="braces">)</span>
+                      <span class="var">;</span>                   
+                    </div>
+                    <span class="braces">}</span>
+                    <br><br>
+
+                    <span class="variable">delete</span>
+                    <span class="braces">(</span>
+                    <span class="param">id</span>
+                    <span class="var">:</span> 
+                    <span class="sp">any</span>
+                    <span class="braces">)</span>
+                    <span class="var">:</span> 
+                    <span class="variable">Observable</span>
+                    <span class="var">&lt;</span>
+                    <span class="sp">any</span>
+                    <span class="var">&gt; </span>
+                    <span class="braces">{{'{'}}</span>
+                    <div class="inner ps-2">
+                      <span class="declare">return </span>
+                      <span class="param">this</span>
+                      <span class="var">.http.</span>
+                      <span class="variable">delete</span>
+                      <span class="braces">(</span>
+                      <span class="var">`${{'{'}}baseUrl}/${{'{'}}</span>
+                      <span class="param">id</span>
+                      <span class="token interpolation-punctuation punctuation">}</span>
+                      <span class="var">`</span>
+                      <span class="braces">)</span>
+                      <span class="var">;</span>
+                    </div>
+                    <span class="braces">}</span>
+                  
+                    <!-- <span class="variable">deleteAll</span><span class="braces">(</span><span class="braces">)</span><span class="var">:</span> <span class="var">Observable</span><span class="var">&lt;</span>any<span class="var">&gt;</span> <span class="braces">{{'{'}}</span>
+                      <span class="declare">return</span> <span class="param">this</span><span class="braces">.</span><span class="token property-access">http</span><span class="braces">.</span><span class="token method function property-access">delete</span><span class="braces">(</span>baseUrl<span class="braces">)</span><span class="braces">;</span>
+                    <span class="braces">}</span> -->
+                    <br><br>
+
+                    <span class="variable">findByTitle</span>
+                    <span class="braces">(</span>
+                    <span class="param">name</span>
+                    <span class="var">:</span> 
+                    <span class="sp">any</span>
+                    <span class="braces">)</span>
+                    <span class="var">:</span>
+                    <span class="variable">Observable</span>
+                    <span class="var">&lt;</span>
+                    <span class="variable">User</span>
+                    <span class="braces">[]</span><span class="var">&gt; </span><span class="braces">{{'{'}}</span>
+                    <div class="inner ps-2">
+                      <span class="declare">return </span>
+                      <span class="param">this</span>
+                      <span class="var">.http.</span>
+                      <span class="variable">get</span>
+                      <span class="var">&lt;</span>
+                      <span class="variable">User</span>
+                      <span class="braces">[]</span>
+                      <span class="var">&gt;</span>
+                      <span class="braces">(</span>
+                      <span class="var">`${{'{'}}baseUrl}</span>
+                      <span class="lib">?name=</span>
+                      <span class="var">${{'{'}}</span>
+                      <span class="param">name</span>
+                      <span class="var">}`</span>
+                      <span class="braces">)</span>
+                      <span class="var">;</span>
+                    </div>
+                    <span class="braces">}</span>
+                    </div>
+                  <span class="braces">}</span>
                   </code>
-                </div>
-                <p>In the same file go and register the imported module for it to be available in your angular application</p>
-                <div class="code-block">
-                  <code class="animated fadeIn"><span class="lit">@</span><a href="api/core/NgModule" class="code-anchor"><span class="lit">NgModule</span></a><span class="pun">({{'{'}}</span><span class="pln">
-                    imports</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
-                      </span><a href="api/common/http/HttpClientModule" class="code-anchor"><span class="typ">HttpClientModule</span></a><span class="pun">,</span><span class="pln">
-                    </span><span class="pun">],</span><span class="pln">
-                  </span><span class="pun">})</span></code>
-                </div>
+              </div>
+            </div>
+            <!-- Components -->
+            <div class="components">
+              <h6>COMPONENTS</h6>
+              <p>From the components we generated ealier on we will start to edit the code so that we could mount them to the browser. We will utilise our user service to gather the data where it is needed.</p>
+              <div class="code-block">
+                <code>
+                  <span class="declare module">import </span> 
+                  <span class="braces">{{'{'}} </span> 
+                  <span class="var">Component</span>
+                  <span class="braces">,</span>
+                  <span class="var"> OnInit </span>
+                  <span class="braces">}</span>
+                  <span class="declare module"> from </span>
+                  <span class="str">'@angular/core'</span>
+                  <span class="var">;</span>
+                  <br>
+                  <span class="declare module">import </span>
+                  <span class="braces">{{'{'}}</span>
+                  <span class="var"> User </span>
+                  <span class="braces">}</span>
+                  <span class="declare module"> from </span>
+                  <span class="str">'src/app/models/user.model'</span>
+                  <span class="var">;</span>
+                  <br>
+                  <span class="declare module">import </span>
+                  <span class="braces"> {{'{'}} </span>
+                  <span class="var"> UserService </span>
+                  <span class="braces">}</span>
+                  <span class="declare module"> from </span>
+                  <span class="str">'src/app/services/user.service'</span>
+                  <span class="var">;</span>
+                  <br><br>
+                  <span class="sp">@Component</span>
+                  <span class="braces">(</span>
+                  <span class="braces">{{'{'}}</span>
+                  
+                    <div class="inner ps-2">
+                      <span class="var">selector:</span>
+                      <span class="str">'app-add-user'</span>
+                      <span class="var">,</span>
+                      <br>
+                      <span class="var">templateUrl:</span>
+                      <span class="str">'./add-user.component.html'</span>
+                      <span class="var">,</span>
+                      <br>
+                      <span class="var">styleUrls:</span>
+                      <span class="braces">[</span>
+                      <span class="str">'./add-user.component.css'</span>
+                      <span class="braces">]</span>
+                    </div>
+                  <span class="braces">})</span>
+                  <br>
+                  <span class="declare module">export</span>
+                  <span class="declare"> class</span>
+                  <span class="var"> AddUserComponent </span>
+                  <span class="declare">implements</span>
+                  <span class="var"> OnInit </span>
+                  <span class="braces">{{'{'}}</span>
+                    <div class="inner ps-2">
+
+                    
+                    <span class="var">user:</span>
+                    <span class="variable">User</span>
+                    <span class="token operator">=</span>
+                    <span class="braces">{{'{'}}</span>
+                      <div class="inner ps-2">
+                        <span class="var">name:</span>
+                        <span class="str">''</span>
+                        <span class="var">,
+                          <br>
+                          surname:
+                        </span>
+                        <span class="str">''</span>
+                        <!-- <span class="var">,
+                          published:
+                        </span> -->
+                        <!-- <span class="token boolean">false</span> -->
+                      </div>
+                    <span class="braces">}</span>
+                    <span class="var">;</span>
+                    <br>
+                    <span class="var">submitted</span>
+                    <span class="token operator">=</span>
+                    <span class="token boolean">false</span>
+                    <span class="var">;</span>
+                    <span class="sp">constructor</span>
+                    <span class="braces">(</span>
+                    <span class="token parameter">
+                      <span class="declare">private </span> 
+                      <span class="param">userService</span>
+                      <span class="token operator">:</span>
+                      <span class="variable">UserService</span>
+                    </span>
+                    <span class="braces">)</span>
+                    <span class="braces">{{'{'}}}</span>
+                  
+                    <span class="token function">ngOnInit</span>
+                    <span class="braces">()</span>
+                    <span class="token operator">:</span>
+                    <span class="declare">void</span>
+                    <span class="braces">{{'{'}} }</span>
+                  
+                    <span class="token function">saveuser</span>
+                    <span class="braces">()</span>
+                    <span class="token operator">:</span>
+                    <span class="declare">void</span>
+                    <span class="braces">{{'{'}}</span>
+                      <span class="declare">const</span> 
+                      data 
+                      <span class="token operator">=</span> 
+                      <span class="braces">{{'{'}}</span>
+                        title
+                        <span class="token operator">:</span>
+                        <span class="declare">this</span>
+                        <span class="braces">.</span>
+                        <span class="token property-access">user</span>
+                        <span class="braces">.</span>
+                        <span class="token property-access">title</span>
+                        <span class="var">,</span>
+                        description
+                        <span class="token operator">:</span>
+                        <span class="declare">this</span>
+                        <span class="braces">.</span>
+                        <span class="token property-access">user</span>
+                        <span class="braces">.</span>
+                        <span class="token property-access">description</span>
+                      <span class="braces">}</span>
+                      <span class="braces">;</span>
+                  
+                      <span class="declare">this</span>
+                      <span class="braces">.</span>
+                      <span class="token property-access">userService</span>
+                      <span class="braces">.</span>
+                      <span class="token method function property-access">create</span>
+                      <span class="braces">(</span>
+                      data
+                      <span class="braces">)</span>
+                        <span class="braces">.</span>
+                        <span class="token method function property-access">subscribe</span>
+                        <span class="braces">(</span><span class="braces">{{'{'}}</span>
+                          <span class="token function-variable function">next</span>
+                          <span class="token operator">:</span> 
+                          <span class="braces">(</span>
+                          <span class="token parameter">res</span>
+                          <span class="braces">)</span>
+                          <span class="token arrow operator">=&gt;</span>
+                          <span class="braces">{{'{'}}</span>
+                            <span class="token console class-name">console</span>
+                            <span class="braces">.</span>
+                            <span class="token method function property-access">log</span>
+                            <span class="braces">(</span>
+                            res
+                            <span class="braces">)</span>
+                            <span class="var">;</span>
+                            <span class="declare">this</span>
+                            <span class="braces">.</span>
+                            <span class="token property-access">submitted</span>
+                            <span class="token operator">=</span>
+                            <span class="token boolean">true</span>
+                            <span class="var">;</span>
+                          <span class="braces">}</span>
+                          <span class="braces">,</span>
+                          <span class="token function-variable function">error</span>
+                          <span class="token operator">:</span>
+                          <span class="braces">(</span>
+                          <span class="token parameter">e</span>
+                          <span class="braces">)</span>
+                          <span class="token arrow operator">=&gt;</span>
+                          <span class="token console class-name">console</span>
+                          <span class="braces">.</span>
+                          <span class="token method function property-access">error</span>
+                          <span class="braces">(</span>
+                          e
+                          <span class="braces">)</span>
+                        <span class="braces">}</span>
+                        <span class="braces">)</span>
+                        <span class="var">;</span>
+                    <span class="braces">}</span>
+                  
+                    <span class="token function">newuser</span>
+                    <span class="braces">()</span>
+                    <span class="token operator">:</span>
+                    <span class="declare">void</span>
+                    <span class="braces">{{'{'}}</span>
+                      <span class="declare">this</span>
+                      <span class="braces">.</span>
+                      <span class="token property-access">submitted</span>
+                      <span class="token operator">=</span>
+                      <span class="token boolean">false</span>
+                      <span class="braces">;</span>
+                      <span class="declare">this</span>
+                      <span class="braces">.</span>
+                      <span class="token property-access">user</span>
+                      <span class="token operator">=</span>
+                      <span class="braces">{{'{'}}</span>
+                        title
+                        <span class="token operator">:</span>
+                        <span class="str">''</span>
+                        <span class="var">,</span>
+                        description<span class="token operator">:</span> <span class="str">''</span><span class="braces">,</span>
+                        published<span class="token operator">:</span> <span class="token boolean">false</span>
+                      <span class="braces">}</span><span class="braces">;</span>
+                    <span class="braces">}</span>
+                    </div>
+                  
+                  <span class="braces">}</span>
+                  </code>
+              </div>
             </div>
         </div>
     </article>

@@ -24,11 +24,17 @@ span.comment, span.api {
     display: block;
     color: gray;
 }
+#app-image {
+    object-fit: cover;
+}
 
 .var {
     color: rgb(10, 77, 87);
     padding-left: 1px;
     padding-right: 1px;
+}
+.str {
+    color: rgb(240, 145, 22);
 }
 .declare {
   color: rgb(23, 7, 247);
@@ -53,6 +59,9 @@ span.comment, span.api {
 }
 .arrow {
     color: blue;
+}
+.sp {
+    color: rgb(59, 152, 214);
 }
 
 .summary {
